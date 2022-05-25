@@ -29,6 +29,7 @@ class _DetailExampleState extends State<DetailExample> {
               if (widget.type == "TextField") textFieldWidget(),
               if (widget.type == "TextFormField") textFormFieldWidget(),
               if (widget.type == "Container") containerWidget(),
+              if (widget.type == "Row") rowWidget(),
             ],
           )),
     );
@@ -92,6 +93,15 @@ class _DetailExampleState extends State<DetailExample> {
         "Hi I am Container",
         style: TextStyle(color: Colors.white),
       ),
+    );
+  }
+
+  Row rowWidget() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [textWidget(), containerWidget()],
     );
   }
 }
