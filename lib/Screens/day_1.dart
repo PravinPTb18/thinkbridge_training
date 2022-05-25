@@ -13,9 +13,10 @@ class _Day1PracticeState extends State<Day1Practice> {
     "Text",
     "TextField",
     "TextFormField",
-    "Images",
+    "Container",
     "Row",
-    "Column"
+    "Column",
+    "Images"
   ];
 
   @override

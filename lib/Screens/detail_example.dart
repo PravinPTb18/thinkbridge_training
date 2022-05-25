@@ -28,6 +28,7 @@ class _DetailExampleState extends State<DetailExample> {
               if (widget.type == "Text") textWidget(),
               if (widget.type == "TextField") textFieldWidget(),
               if (widget.type == "TextFormField") textFormFieldWidget(),
+              if (widget.type == "Container") containerWidget(),
             ],
           )),
     );
@@ -79,5 +80,18 @@ class _DetailExampleState extends State<DetailExample> {
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
                 borderSide: const BorderSide(width: 8.0))));
+  }
+
+  Container containerWidget() {
+    return Container(
+      alignment: Alignment.center,
+      height: MediaQuery.of(context).size.height * 0.25,
+      decoration: BoxDecoration(
+          color: Colors.red, borderRadius: BorderRadius.circular(20.0)),
+      child: const Text(
+        "Hi I am Container",
+        style: TextStyle(color: Colors.white),
+      ),
+    );
   }
 }
