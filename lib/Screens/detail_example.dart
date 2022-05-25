@@ -30,6 +30,7 @@ class _DetailExampleState extends State<DetailExample> {
               if (widget.type == "TextFormField") textFormFieldWidget(),
               if (widget.type == "Container") containerWidget(),
               if (widget.type == "Row") rowWidget(),
+              if (widget.type == "Column") columnWidget(),
             ],
           )),
     );
@@ -102,6 +103,15 @@ class _DetailExampleState extends State<DetailExample> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: [textWidget(), containerWidget()],
+    );
+  }
+
+  Column columnWidget() {
+    return Column(
+      children: [
+        textWidget(),
+        containerWidget(),
+      ],
     );
   }
 }
