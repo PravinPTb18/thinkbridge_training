@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class DetailExample extends StatefulWidget {
   final type;
@@ -22,9 +23,11 @@ class _DetailExampleState extends State<DetailExample> {
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: ListView(
+            padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 8.0),
             children: [
               if (widget.type == "Text") textWidget(),
               if (widget.type == "TextField") textFieldWidget(),
+              if (widget.type == "TextFormField") textFormFieldWidget(),
             ],
           )),
     );
@@ -55,5 +58,26 @@ class _DetailExampleState extends State<DetailExample> {
               gapPadding: 10.0,
               borderSide: const BorderSide(width: 8.0))),
     );
+  }
+
+  TextFormField textFormFieldWidget() {
+    return TextFormField(
+        cursorColor: Colors.green,
+        autofillHints: const [AutofillHints.email],
+        validator: (val) {
+          if (val!.isEmpty) {
+            return "Please enter some value";
+          }
+        },
+        decoration: InputDecoration(
+            hintText: "Text Form Field Here...",
+            hintStyle: const TextStyle(color: Colors.green, fontSize: 20.0),
+            focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.green)),
+            enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.green)),
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: const BorderSide(width: 8.0))));
   }
 }
