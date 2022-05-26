@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tb_practice/Screens/api_demo_page.dart';
 import 'package:tb_practice/Screens/detail_example.dart';
 
 class Day1Practice extends StatefulWidget {
@@ -18,7 +19,8 @@ class _Day1PracticeState extends State<Day1Practice> {
     "Column",
     "Forms",
     "Images",
-    "List"
+    "List",
+    "Api Demo"
   ];
 
   @override
@@ -36,12 +38,17 @@ class _Day1PracticeState extends State<Day1Practice> {
                   const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
               itemBuilder: (context, index) => GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => DetailExample(
-                                    type: exampleList[index],
-                                  )));
+                      exampleList[index] == "Api Demo"
+                          ? Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const ApiDemoPage()))
+                          : Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => DetailExample(
+                                        type: exampleList[index],
+                                      )));
                     },
                     child: Container(
                       height: 100,

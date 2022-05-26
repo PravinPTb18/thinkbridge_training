@@ -1,9 +1,8 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class DetailExample extends StatefulWidget {
-  final type;
+  final String? type;
   const DetailExample({Key? key, this.type}) : super(key: key);
 
   @override
@@ -18,7 +17,7 @@ class _DetailExampleState extends State<DetailExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.type),
+        title: Text(widget.type!),
         elevation: 0.0,
       ),
       body: SizedBox(
@@ -183,7 +182,7 @@ class _DetailExampleState extends State<DetailExample> {
           "Image loading from internet",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        Container(
+        SizedBox(
             height: MediaQuery.of(context).size.height * 0.3,
             width: MediaQuery.of(context).size.width,
             child: Image.network(
@@ -194,7 +193,7 @@ class _DetailExampleState extends State<DetailExample> {
           "Image loading from assets folder",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        Container(
+        SizedBox(
             height: MediaQuery.of(context).size.height * 0.3,
             width: MediaQuery.of(context).size.width,
             child: Image.asset("assets/images/img_1.jpg"))
@@ -232,7 +231,7 @@ class _DetailExampleState extends State<DetailExample> {
             height: 300,
             color: Colors.white,
             child: ListView.builder(
-                itemBuilder: (context, index) => Container(
+                itemBuilder: (context, index) => SizedBox(
                       height: 60,
                       width: 100,
                       child: Text("Text $index"),
