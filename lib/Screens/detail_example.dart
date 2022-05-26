@@ -34,6 +34,7 @@ class _DetailExampleState extends State<DetailExample> {
               if (widget.type == "Row") rowWidget(),
               if (widget.type == "Column") columnWidget(),
               if (widget.type == "Forms") formExample(),
+              if (widget.type == "Images") imagesExample(),
             ],
           )),
     );
@@ -170,6 +171,33 @@ class _DetailExampleState extends State<DetailExample> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget imagesExample() {
+    return Column(
+      children: [
+        // image loading from given url
+        const Text(
+          "Image loading from internet",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        Container(
+            height: MediaQuery.of(context).size.height * 0.3,
+            width: MediaQuery.of(context).size.width,
+            child: Image.network(
+              "https://picsum.photos/200/300",
+              fit: BoxFit.fill,
+            )),
+        const Text(
+          "Image loading from assets folder",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        Container(
+            height: MediaQuery.of(context).size.height * 0.3,
+            width: MediaQuery.of(context).size.width,
+            child: Image.asset("assets/images/img_1.jpg"))
+      ],
     );
   }
 }
