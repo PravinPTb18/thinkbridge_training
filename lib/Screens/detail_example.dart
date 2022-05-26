@@ -35,6 +35,7 @@ class _DetailExampleState extends State<DetailExample> {
               if (widget.type == "Column") columnWidget(),
               if (widget.type == "Forms") formExample(),
               if (widget.type == "Images") imagesExample(),
+              if (widget.type == "List") listExample(),
             ],
           )),
     );
@@ -198,6 +199,86 @@ class _DetailExampleState extends State<DetailExample> {
             width: MediaQuery.of(context).size.width,
             child: Image.asset("assets/images/img_1.jpg"))
       ],
+    );
+  }
+
+  Widget listExample() {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      child: ListView(
+        shrinkWrap: true,
+        padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4.0),
+        children: [
+          const Text("Simple List View example"),
+          const SizedBox(
+            height: 10.0,
+          ),
+          textFieldWidget(),
+          const SizedBox(
+            height: 10.0,
+          ),
+          textFormFieldWidget(),
+          const SizedBox(
+            height: 10.0,
+          ),
+          textWidget(),
+          const Divider(
+            thickness: 2.0,
+          ),
+          const Text(
+              "Example of  List View builder which creates dynamic list"),
+          Container(
+            height: 300,
+            color: Colors.white,
+            child: ListView.builder(
+                itemBuilder: (context, index) => Container(
+                      height: 60,
+                      width: 100,
+                      child: Text("Text $index"),
+                    )),
+          ),
+          const Text("Example of  grid view"),
+          Container(
+            height: 400,
+            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+            child: GridView(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  //it will display number of items in horizontal
+                  crossAxisCount: 4,
+
+                  //it will add spacing between each child in mainAxis
+                  mainAxisSpacing: 4),
+              children: [
+                Container(
+                  height: 20,
+                  color: Colors.red,
+                ),
+                Container(
+                  height: 20,
+                  color: Colors.blue,
+                ),
+                Container(
+                  height: 20,
+                  color: Colors.red,
+                ),
+                Container(
+                  height: 20,
+                  color: Colors.blue,
+                ),
+                Container(
+                  height: 20,
+                  color: Colors.red,
+                ),
+                Container(
+                  height: 20,
+                  color: Colors.blue,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -17,7 +17,8 @@ class _Day1PracticeState extends State<Day1Practice> {
     "Row",
     "Column",
     "Forms",
-    "Images"
+    "Images",
+    "List"
   ];
 
   @override
