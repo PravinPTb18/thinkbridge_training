@@ -16,6 +16,7 @@ class _Day1PracticeState extends State<Day1Practice> {
     "Container",
     "Row",
     "Column",
+    "Forms",
     "Images"
   ];
 

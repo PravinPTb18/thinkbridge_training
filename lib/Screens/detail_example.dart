@@ -12,6 +12,8 @@ class DetailExample extends StatefulWidget {
 
 class _DetailExampleState extends State<DetailExample> {
   TextEditingController textFieldController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +33,7 @@ class _DetailExampleState extends State<DetailExample> {
               if (widget.type == "Container") containerWidget(),
               if (widget.type == "Row") rowWidget(),
               if (widget.type == "Column") columnWidget(),
+              if (widget.type == "Forms") formExample(),
             ],
           )),
     );
@@ -112,6 +115,61 @@ class _DetailExampleState extends State<DetailExample> {
         textWidget(),
         containerWidget(),
       ],
+    );
+  }
+
+  Widget formExample() {
+    return Form(
+      key: _formKey,
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.5,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextFormField(
+                cursorColor: Colors.green,
+                autofillHints: const [AutofillHints.name],
+
+                // validation logic goes here, like if user doesnt adds
+                // anything in textformfield it will return the string
+                validator: (val) {
+                  if (val!.isEmpty) {
+                    return "Please Enter Name..";
+                  }
+                },
+                decoration: InputDecoration(
+                    hintText: "Enter a name",
+                    //it is used to decorate border color if there is any error
+                    errorBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red, width: 2.0),
+                    ),
+                    // it is used to provide style to the error text
+                    errorStyle: const TextStyle(
+                        color: Colors.red,
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.bold),
+                    hintStyle:
+                        const TextStyle(color: Colors.green, fontSize: 20.0),
+                    focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green)),
+                    enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green)),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: const BorderSide(width: 8.0)))),
+            const SizedBox(
+              height: 20.0,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // if user press the button below code will validate it
+                if (_formKey.currentState!.validate()) {}
+              },
+              child: const Text('Submit'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
