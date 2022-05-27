@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tb_practice/Screens/api_demo_page.dart';
 import 'package:tb_practice/Screens/detail_example.dart';
+import 'package:tb_practice/Screens/provider_demo_page.dart';
 
 class Day1Practice extends StatefulWidget {
   const Day1Practice({Key? key}) : super(key: key);
@@ -20,7 +21,8 @@ class _Day1PracticeState extends State<Day1Practice> {
     "Forms",
     "Images",
     "List",
-    "Api Demo"
+    "Api Demo",
+    "Provider Demo"
   ];
 
   @override
@@ -43,12 +45,17 @@ class _Day1PracticeState extends State<Day1Practice> {
                               context,
                               MaterialPageRoute(
                                   builder: (_) => const ApiDemoPage()))
-                          : Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => DetailExample(
-                                        type: exampleList[index],
-                                      )));
+                          : exampleList[index] == "Provider Demo"
+                              ? Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => const ProviderDemoPage()))
+                              : Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => DetailExample(
+                                            type: exampleList[index],
+                                          )));
                     },
                     child: Container(
                       height: 100,

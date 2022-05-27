@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tb_practice/Providers/data_provider.dart';
+import 'package:tb_practice/Providers/theme_provider.dart';
 import 'package:tb_practice/Screens/day_1.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => NewData()),
+        ChangeNotifierProvider(create: (_) => ThemeProvider())
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +25,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: context.watch<ThemeProvider>().mainColor,
       ),
       home: const Day1Practice(),
     );
