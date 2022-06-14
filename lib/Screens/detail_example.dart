@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 
 class DetailExample extends StatefulWidget {
   final String? type;
@@ -18,7 +18,7 @@ class _DetailExampleState extends State<DetailExample> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.type!),
-        // elevation: 0.0,
+        elevation: 0.0,
       ),
       body: SizedBox(
           height: MediaQuery.of(context).size.height,
