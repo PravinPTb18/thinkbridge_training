@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
+import 'package:tb_practice/Providers/theme_provider.dart';
 import 'package:tb_practice/Screens/api_demo_page.dart';
 import 'package:tb_practice/Screens/detail_example.dart';
 import 'package:tb_practice/Screens/provider_demo_page.dart';
@@ -24,6 +26,7 @@ class _Day1PracticeState extends State<Day1Practice> {
     "Api Demo",
     "Provider Demo"
   ];
+  bool isDarkTheme = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +34,15 @@ class _Day1PracticeState extends State<Day1Practice> {
       appBar: AppBar(
         title: const Text("Day 1 Practice"),
         elevation: 0.0,
+        actions: [
+          Switch(
+              value: isDarkTheme,
+              onChanged: (val) {
+                isDarkTheme = !isDarkTheme;
+                context.read<ThemeProvider>().changeToDarktheme(isDarkTheme);
+                setState(() {});
+              })
+        ],
       ),
       body: SizedBox(
           height: MediaQuery.of(context).size.height,

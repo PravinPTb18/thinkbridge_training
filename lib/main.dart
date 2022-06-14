@@ -25,8 +25,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: context.watch<ThemeProvider>().mainColor,
-      ),
+          primarySwatch: context.watch<ThemeProvider>().mainColor,
+          brightness: context.watch<ThemeProvider>().brightness,
+          textTheme: TextTheme()),
       home: const Day1Practice(),
     );
   }
