@@ -18,7 +18,7 @@ class _DetailExampleState extends State<DetailExample> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.type!),
-        elevation: 0.0,
+        // elevation: 0.0,
       ),
       body: SizedBox(
           height: MediaQuery.of(context).size.height,
